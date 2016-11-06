@@ -16,11 +16,11 @@
       <!-- Side Widget Well -->
       <div class="well">
         <h4>Recent Posts</h4>
-          <%# @articles.each do |a| %>
+          <% @articles.each do |a| %>
             Created by: <%#= a.user.username %><br />
-            <strong><%#= link_to a.title, a %></strong>
-            <p><%#= truncate(a.body) %></p>
-          <%# end %>
+            <strong><%= link_to a.title, a %></strong>
+            <p><%= truncate(a.body) %></p>
+          <% end %>
       </div>
   </div>
 
