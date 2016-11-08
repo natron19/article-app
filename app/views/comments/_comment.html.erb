@@ -1,20 +1,24 @@
-<div class="media">
-    <div class="pull-left">
+<div class="color round2">
+    <div class="media">
+        <div class="pull-left">
 
-        <%= comment.user.username %>
-        <%= image_tag comment.user.image.url(:thumb), class: "img-circle" %>
+            <p>Comment by: <%= comment.user.username %></p><br />
+            <%= image_tag comment.user.image.url(:thumb), class: "img-circle" %>
 
+        </div>
+        <div class="media-body pull-left">
+            <p class="media-heading pull-right">
+              <%= time_ago_in_words(comment.created_at) %>
+            </p><br />
+            <%= comment.body %>
+
+        </div>
     </div>
-    <div class="media-body pull-left">
-        <p class="media-heading pull-right">
-          <%= time_ago_in_words(comment.created_at) %>
-        </p><br />
-        <%= comment.body %>
+    <br />
 
-    </div>
+    <%= link_to "Edit Comment", edit_article_comment_path(comment.article, comment), class: "small", class: "btn btn-success btn-xs round" %>
+
+    <%= link_to "Delete Comment", [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "small", class: "btn btn-info btn-xs round" %>
+    <br />
 </div>
-
-
-<%= link_to "Edit", edit_article_comment_path(comment.article, comment), class: "small" %>
-
-<%= link_to "Delete", [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "small" %>
+<br />
