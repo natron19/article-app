@@ -2,6 +2,7 @@
     <div class="pull-left">
 
         <%= comment.user.username %>
+        <%= image_tag comment.user.image.url(:thumb), class: "img-circle" %>
 
     </div>
     <div class="media-body pull-left">
