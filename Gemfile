@@ -44,6 +44,8 @@ gem 'paperclip', '~> 5.1'
 
 gem 'aws-sdk', '~> 2'
 
+gem 'cancancan', '~> 1.15'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

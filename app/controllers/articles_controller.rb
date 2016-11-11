@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    authorize! :update, @article
   end
 
   # POST /articles
@@ -42,6 +43,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    authorize! :update, @article
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
@@ -56,6 +58,7 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
+    authorize! :destroy, @article
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }

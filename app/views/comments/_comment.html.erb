@@ -2,11 +2,11 @@
     <div class="media">
         <div class="pull-left">
 
-            <p>Comment by: <%= comment.user.username %></p><br />
+            <strong>Comment by: <%= comment.user.username %></strong><br />
             <%= image_tag comment.user.image.url(:thumb), class: "img-circle" %>
 
         </div>
-        <div class="media-body pull-left">
+        <div class="media-body">
             <p class="media-heading pull-right">
               <%= time_ago_in_words(comment.created_at) %>
             </p><br />
@@ -15,10 +15,12 @@
         </div>
     </div>
     <br />
-
-    <%= link_to "Edit Comment", edit_article_comment_path(comment.article, comment), class: "small", class: "btn btn-success btn-xs round" %>
-
-    <%= link_to "Delete Comment", [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "small", class: "btn btn-info btn-xs round" %>
+    <% if can? :update, comment %>
+        <%= link_to "Edit Comment", edit_article_comment_path(comment.article, comment), class: "small", class: "btn btn-success btn-xs round" %>
+    <% end %>
+    <% if can? :destroy, comment %>
+        <%= link_to "Delete Comment", [comment.article, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "small", class: "btn btn-info btn-xs round" %>
+    <% end %>
     <br />
 </div>
 <br />

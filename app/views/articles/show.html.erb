@@ -78,5 +78,9 @@
 </div>
 
 <%= link_to 'Back to all Articles', articles_path, class: "btn btn-success btn-xs round" %>
-<%= link_to 'Edit Article', edit_article_path(@article), class: "btn btn-info btn-xs round" %>
-<%= link_to 'Delete Article', @article, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger btn-xs round" %>
+<% if can? :update, @article %>
+    <%= link_to 'Edit Article', edit_article_path(@article), class: "btn btn-info btn-xs round" %>
+<% end %>
+<% if can? :destroy, @article %>
+    <%= link_to 'Delete Article', @article, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-danger btn-xs round" %>
+<% end %>
